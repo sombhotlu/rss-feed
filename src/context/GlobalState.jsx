@@ -52,8 +52,10 @@ class GlobalState extends Component {
                 })
                 .catch((error) => {
                     console.log('The error is -->',error.message);
-                    this.setState({ data: {}});
-                    alert("CORS error")
+                    this.setState(() => ({ data: {}}), () => {
+                        alert(`CORS error for ${this.state.selectedLink.name}`)
+                    });
+                    
                 });
     }
 

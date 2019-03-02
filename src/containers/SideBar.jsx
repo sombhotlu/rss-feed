@@ -1,12 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button } from '../components/Button';
+import { NavLink } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 import URLContext from '../context/url-context';
 
-let timeoutvar;
+// padding: 20px 0 0 20px;
+// padding: 20px 0 0 20px;
 
-// padding: 20px 0 0 20px;
-// padding: 20px 0 0 20px;
+const NavLinkStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    color: 'black',
+    textDecoration: 'none',
+    alignItems: 'center',
+    padding: '10px',
+    gridArea: 'button',
+    margin: '10px',
+    borderRadius: '5px',
+    border: '1px solid black',
+    background: 'white',
+} 
+
+const NavLinkActiveStyle = {
+    background: "linear-gradient(#ffffff, #c9c7c7)",
+    boxShadow: "2px 3px 4px #ccc",
+}
 
 const InputContainer = styled.div`
     display: flex;
@@ -52,59 +70,20 @@ const Message = styled.div`
 `;
 
 const SideBar = () => {
-    const [links, setLinks] = useState(["https://api.rss2json.com/v1/api.json?rss_url=https://aws.amazon.com/blogs/big-data/feed/"]);
     const [inputLink, setInputLink] = useState('');
-    const [message, setMessage] = useState('');
-    // const [selectedLink, setSelectedLink] = useState('');
+
     const context = useContext(URLContext);
 
-
-    useEffect(() => {
-   
-            let newLinks = JSON.parse(localStorage.getItem('link'));
-            if (newLinks) setLinks(newLinks);
-
-    }, []);
-
-
-    let messageDiv = message ? (
-        message === 'Link Added Successfully' ? (
-            <Message primary>{message}</Message>
+    let messageDiv = context.message ? (
+        context.message === 'Link Added Successfully' ? (
+            <Message primary>{context.message}</Message>
         ) : (
-            <Message>{message}</Message>
+            <Message>{context.message}</Message>
         )
     ) : null;
 
     const inputChangeHandler = (event) => {
         setInputLink(event.currentTarget.value);
-    };
-
-    const addLinkHandler = () => {
-        console.log("The timeoutvar  -->", timeoutvar)
-        if (links.includes(inputLink)) {
-            clearTimeout(timeoutvar);
-            setMessage('Link Already Present');
-            timeoutvar = setTimeout( function() {  setMessage('')}, 5000);
-        } else {
-            clearTimeout(timeoutvar);
-            setLinks([inputLink, ...links]);
-            localStorage.setItem('link', JSON.stringify([inputLink, ...links]));
-            setMessage('Link Added Successfully');
-            timeoutvar = setTimeout(function() {  setMessage('')}, 5000);
-        }
-    };
-
-    const removeLinkHandler = (removeLink) => {
-        let newLinks = [...links];
-        console.log('remove link is -->', newLinks, removeLink);
-        let removeIndex = newLinks.findIndex((link) => {
-            return link === removeLink;
-        });
-        console.log('The removeIndex is  ==>', removeIndex);
-        newLinks.splice(removeIndex, 1);
-        console.log('Now the new Links is -->', newLinks);
-        setLinks(newLinks);
-        localStorage.setItem('link', JSON.stringify(newLinks));
     };
 
     return (
@@ -116,7 +95,7 @@ const SideBar = () => {
                     value={inputLink}
                     placeholder="Enter the URL here"
                 />
-                <SearchButton onClick={addLinkHandler}>
+                <SearchButton onClick={() => context.addLinkHandler(inputLink)}>
                     <span role="img" aria-label="search">
                         &#x1F50E;
                     </span>
@@ -124,12 +103,22 @@ const SideBar = () => {
             </InputContainer>
             <ButtonContainer>
                 {messageDiv}
-                {links.map((link) =>  (
-                    <Button active={ link === context.selectedLink} onClick={ () => context.setSelectedLink(link)} key={link}>
-                        <span>{link}</span>
-                        <span onClick={() => removeLinkHandler(link)}> x </span>
-                    </Button>
-                ))}
+                {context.links.map((link, index) =>{ 
+                    // console.log("The link is -->", link);
+                    return (
+                        <NavLink
+                            exact={true}
+                            style={NavLinkStyle}
+                            activeStyle={NavLinkActiveStyle}
+                            to={"/" + link.id}
+                            onClick={() => context.setSelectedLink(link)}
+                            key={link.id}>
+                            <span style={{ wordBreak: 'break-word' }}>{link.name}</span>&nbsp;
+                            <span onClick={() => context.removeLinkHandler(link)}>
+                                X
+                            </span>
+                        </NavLink>
+                )})}
             </ButtonContainer>
         </>
     );

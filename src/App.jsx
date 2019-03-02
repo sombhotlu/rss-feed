@@ -1,11 +1,9 @@
-import {useContext, useEffect} from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
 import MainPage from './containers/MainPage';
 import SideBar from './containers/SideBar';
-import URLContext from './context/url-context';
 
 const pagelayout = css`
     width: 100%;
@@ -21,8 +19,6 @@ const pagelayout = css`
 `;
 
 const App = (props) => {
-
-    let context = useContext(URLContext)
 
     console.log("App Component changed **", props, props.location.pathname)
     return (

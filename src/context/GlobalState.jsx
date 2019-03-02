@@ -53,7 +53,7 @@ class GlobalState extends Component {
                 .catch((error) => {
                     console.log('The error is -->',error.message);
                     this.setState(() => ({ data: {}}), () => {
-                        alert(`CORS error for ${this.state.selectedLink.name}`)
+                        alert(`${error.message} for ${this.state.selectedLink.name}`)
                     });
                     
                 });
@@ -66,7 +66,7 @@ class GlobalState extends Component {
     updateSelectedLink = (linkId) => {
         console.log("The state links are -->",this.state.links, typeof this.state.links[0].id , typeof linkId)
 
-        const link = this.state.links.find( link => link.id == linkId);
+        const link = this.state.links.find( link => link.id.toString() === linkId);
         console.log("The link and linkId is -->", link, linkId)
         this.setState({ selectedLink: link})
 

@@ -6,6 +6,5 @@
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Use the following Links to work:
-https://api.rss2json.com/v1/api.json?rss_url=https://aws.amazon.com/blogs/big-data/feed/
+Use the following Link to work:
  https://api.rss2json.com/v1/api.json?rss_url=https://aws.amazon.com/blogs/big-data/feed/

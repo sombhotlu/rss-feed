@@ -1,13 +1,13 @@
 {
   "main.css": "/rss-feed/static/css/main.8ef68682.chunk.css",
-  "main.js": "/rss-feed/static/js/main.d7c81488.chunk.js",
-  "main.js.map": "/rss-feed/static/js/main.d7c81488.chunk.js.map",
+  "main.js": "/rss-feed/static/js/main.95b86bbd.chunk.js",
+  "main.js.map": "/rss-feed/static/js/main.95b86bbd.chunk.js.map",
   "runtime~main.js": "/rss-feed/static/js/runtime~main.f3b7fa05.js",
   "runtime~main.js.map": "/rss-feed/static/js/runtime~main.f3b7fa05.js.map",
   "static/js/2.c532a251.chunk.js": "/rss-feed/static/js/2.c532a251.chunk.js",
   "static/js/2.c532a251.chunk.js.map": "/rss-feed/static/js/2.c532a251.chunk.js.map",
   "index.html": "/rss-feed/index.html",
-  "precache-manifest.0d39a73fccceab654d172b9efc201656.js": "/rss-feed/precache-manifest.0d39a73fccceab654d172b9efc201656.js",
+  "precache-manifest.5640cf0e457b1dc2d8e5e8f654f07f31.js": "/rss-feed/precache-manifest.5640cf0e457b1dc2d8e5e8f654f07f31.js",
   "service-worker.js": "/rss-feed/service-worker.js",
   "static/css/main.8ef68682.chunk.css.map": "/rss-feed/static/css/main.8ef68682.chunk.css.map"
 }

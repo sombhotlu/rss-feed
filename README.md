@@ -1,3 +1,5 @@
+This project is hosted on https://sombhotlu.github.io/rss-feed/
+
 ## Steps to run.
 
 #### `Clone the Directory`

@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
     <GlobalState>
-        <BrowserRouter> 
+        <BrowserRouter basename="/rss-feed"> 
             <App />
         </BrowserRouter>
     </GlobalState>,

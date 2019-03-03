@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/rss-feed/static/css/main.8ef68682.chunk.css"
   },
   {
-    "revision": "c49589f96c8fdc23dd4040a8ad5a2479",
+    "revision": "72e9fa219004e47e8815c3481ad90734",
     "url": "/rss-feed/index.html"
   }
 ];
